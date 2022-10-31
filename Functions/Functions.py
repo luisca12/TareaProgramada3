@@ -77,17 +77,25 @@ def readOneLineF(File):
         
         if checkIsDigit(contentLine):
             contentLine = int(contentLine)
-            # if (contentLine + 1) > count:
-            #     print("This line does not exist!")
-        # else:
-            content = File.readline()
-            print(content[contentLine])
-            break
-        
-        print('\n------------------------------------------------- ')  
-        print('>      INPUT ERROR: Only numbers are allowed       <')
-        print('\n------------------------------------------------- ')
-        os.system("PAUSE")
-        os.system("CLS")
+            if not checkFileLine(File,int(contentLine)):
+                print("This line does not exist!")
+            else:
+                content = File.readline()
+                print(content[contentLine])
+                break
+        else:
+            print('\n------------------------------------------------- ')  
+            print('>      INPUT ERROR: Only numbers are allowed       <')
+            print('\n------------------------------------------------- ')
+            os.system("PAUSE")
+            os.system("CLS")
     
     os.system("PAUSE")
+
+def checkFileLine (file, countline):
+    line = 0
+    for line in enumerate(file):
+        pass
+    if line[0] + 1 < int(countline) or int(countline) <= 0:
+        return False
+    return True
